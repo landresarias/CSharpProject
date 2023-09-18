@@ -1,0 +1,1 @@
+For running the app just prest 'ctrl + fn + f5'. that's it

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\MovieCSProj_Luis_20220321.props" />
+</Project>

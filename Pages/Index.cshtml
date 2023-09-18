@@ -1,0 +1,126 @@
+﻿@page
+@model IndexModel
+
+<!----Adding a TextField and a Button to the website----->
+<div id="searchDiv">
+    <form id="movieSearch" method="POST" asp-page-handler="MovieSearch">
+        <input id="searchBox" autofocus type="text" name="search" 
+            placeholder="Type the movie title that you wish...">
+        <input type="submit" value="Search">
+        <input id="upco" type="submit" form="up" value="Upcoming" >
+    </form>
+</div>
+
+<!----Search in TheMovieDB API for a requested movie list---->
+<div id="searchResults">
+    @if(Model.fetch.posterSet != null){
+        <h2><br><br><br>Search Results: @Model.searching</h2><br>
+        for(int i = 0; i < Model.fetch.posterSet.results.Count; i++){
+            string searchPath = "https://image.tmdb.org/t/p/w500" + Model.fetch.
+                posterSet.results.ElementAt(i).poster_path;
+            <form method="POST" asp-page-handler="MovieResults">
+                <div class="thumb" style="background: url(@searchPath); 
+                    background-size: 100%;">
+                    <!-- Next to do click in any picture(image button) to 
+                    show a movies detail-->
+                    <input class="imageBtn" type="submit" name="movieID" 
+                        value="@Model.fetch.posterSet.results.ElementAt(i).id">
+                </div>
+            </form>
+        }
+    }
+    else{
+        //Showing a tranding movies list
+        @if(Model.fetch.trendingSet != null){
+            <h2><br><br><br>Trending Now</h2>
+            <h5>Popular movies in cinema & fresh flicks for streaming</h5><br>
+            for(int i = 0; i < Model.fetch.trendingSet.results.Count; i++){
+                string Path = "https://image.tmdb.org/t/p/w500" + Model.fetch.
+                    trendingSet.results.ElementAt(i).poster_path;
+                <form method="POST" asp-page-handler="MovieResults">
+                    <div class="thumb" style="background: url(@Path); 
+                        background-size: 100%;">
+                        <!-- Next to do click in any picture(image button) -->
+                        <input class="imageBtn" type="submit" name="movieID" 
+                            value="@Model.fetch.trendingSet.results.ElementAt(i).id">
+                    </div>
+                </form>
+            }
+        }
+    }
+</div>
+
+<!----Search in TheMovieDB API for a Upcoming movie list---->
+<div id="upcomingResults">
+    @if(Model.fetch.movieUpcomingSet != null){
+        <h2><br><br><br>Upcoming Movies</h2><br>
+        for(int i = 0; i < Model.fetch.movieUpcomingSet.results.Count; i++){
+            string upcomingPath = "https://image.tmdb.org/t/p/w500" + Model.fetch.
+            movieUpcomingSet.results.ElementAt(i).poster_path;
+            <form id="up" method="POST" asp-page-handler="UpcomingResults">
+                <div class="thumb" style="background: url(@upcomingPath); 
+                    background-size: 100%;">
+                    <!-- Next to do click in any picture(image button) -->
+                    <!--<input class="imageBtn" type="submit" name="movieID" 
+                        value="@Model.fetch.movieUpcomingSet.results.ElementAt(i).id">-->
+                </div>
+            </form>
+        }
+    }
+}
+
+<!----Showing details about a selected movie------->
+@if(Model.fetch.movieDetails != null){
+    <div id="movieDetails" onclick="ClosePanel();">
+        <div id="mainTrailer">
+            @{
+                string youtubePath = "https://www.youtube.com/embed/" + @Model.
+                    fetch.videoSet.results[0].key+"?autoplay=1";
+            }
+            <iframe id="tra" class="mainTrailer" src="@youtubePath" title="Youtube Video Player"
+                allow="autoplay; clipboard-write; encrypted-media; 
+                picture-in-picture;" allowfullscreen> 
+            </iframe>
+        </div>
+        <div id="detailPanel">
+            <h1>@Model.fetch.movieDetails.title</h1><br>
+            <h2>Released: @Model.fetch.movieDetails.release_date | 
+                Budget: @Model.convertedBudgets | 
+                Homepage: <a href="@Model.fetch.movieDetails.homepage" 
+                    title="Model.fetch.movieDetails.title" target="_blank">
+                        Official website
+                    </a><br>
+            </h2>
+            <p id="overview">@Model.fetch.movieDetails.overview<br><br></p>
+
+            <!----Adding some videos into the movieDetails form---->
+            @if(Model.fetch.videoSet.results.Count > 0){
+                for(int i = 0; i < Model.maxVideos; i++){
+                    youtubePath = "https://www.youtube.com/embed/" + @Model.
+                        fetch.videoSet.results[i].key;
+                    <iframe class="trailer" src="@youtubePath" title="Youtube Video Player"
+                        allow="autoplay; clipboard-write; encrypted-media; 
+                        picture-in-picture;" allowfullscreen> 
+                    </iframe>
+                }
+            }
+             <br> <br> <br>
+            <!----Next div will show an actors list from the selected movie---->
+            <div id="castDiv">
+                @for(int i = 0; i < Model.maxCast; i++){
+                    string castPath = "https://image.tmdb.org/t/p/w500" + Model.fetch.
+                        castSet.cast.ElementAt(i).profile_path;
+                    <div class="castImg" style="background: url(@castPath); 
+                        background-size: 100%;">
+                        <form method="POST" asp-page-handler="GetActor">
+                            <input class="imageBtn" type="submit" name="actorID"
+                                value="@Model.fetch.castSet.cast.ElementAt(i).id">
+                        </form>
+                        <span class="castName">@Model.fetch.castSet.cast.ElementAt(i).name</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+

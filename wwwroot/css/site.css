@@ -1,0 +1,183 @@
+
+@font-face {
+  font-family: 'tillamook_demoregular';
+  src: url('../Assets/Fonts/tillamookdemoregular-webfont.woff2') format('woff2'),
+       url('../Assets/Fonts/tillamookdemoregular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@500&display=swap');
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{ 
+  width: 100%;
+  height: auto;
+  background: #363541;
+  font-family: 'Roboto', sans-serif;
+  color: #662f63;
+}
+header{
+  width: 100%;
+  height: 400px;
+  background: url('../Assets/Images/Movies2.jpg');
+  border-bottom: 5px solid #ffffff;
+}
+/****formating search text field****/
+#movieSearch{
+  width: 45%;
+  background: #ccc8c8;
+  margin: -70px auto;
+  padding: 5px;
+  border-radius: 20px;
+}
+  #movieSearch [type="text"]{
+    width: 58.5%;
+    font-size: 1.2rem;
+    background-color: rgb(228, 247, 253);
+    color: rgb(12, 23, 122);
+    padding: 5px 20px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+/****formating search button****/
+  #movieSearch [type="submit"]{
+    width: 20%;
+    font-size: 1.2rem;
+    background-color: #8b1717;
+    color: beige;
+    padding: 5px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  #movieSearch #upco{
+    background-color: #4f7019;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+  } 
+/****Results Styling*****/
+#searchResults, #upcomingResults{
+  width: 86%;
+  height: auto;
+  margin: 20px auto;
+  padding: 20px;
+}
+.thumb{
+  width: 120px;
+  height: 170px;
+  float: left;
+  margin: 10px;
+  border-radius: 4px;
+  border: 2px solid #f8f4f7
+}
+.imageBtn{
+  width: 120px;
+  height: 170px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+#searchResults,#upcomingResults h2{
+  padding: 0 10px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-style:oblique;
+  color:#fff;   
+}
+#searchResults h5{
+  width: 30%;
+  padding: 0 10px;
+  font-family:cursive;
+  color:#fff;   
+}
+
+/*****MovieDetails Styling****/
+#movieDetails{
+  position: absolute;
+  z-index: 3;
+  width: 85%;
+  height: 900px;
+  background: #e6d8b1;
+  padding: 50px 50px;
+  border-radius: 15px;
+  left: 8%;
+  top: -1000px;
+  overflow: hidden;
+}
+#mainTrailer{
+  position: relative;
+  z-index: 4;
+}
+.mainTrailer{
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 797px;
+  border: 2px solid #fff;
+  border-radius: 15px;
+}
+#detailPanel{
+  position: absolute;
+  z-index: 7;
+  width: 93%;
+  top: 50px;
+  background: linear-gradient(to bottom,rgba(255, 255, 255,.7),rgba(184, 77, 77, 0.3));
+  padding: 20px;
+  border-radius: 15px;
+}
+  #detailPanel h1{
+    color: #803e86;
+    font-size: 2.2rem;
+    font-family: "tillamook_demoregular";
+    text-shadow: 3px 3px 13px rgb(80, 75, 75);
+    -webkit-text-stroke: .5px #000;
+  }
+#overview, #actorBiog{
+  font-size: 1.1rem;
+  margin: 25px;
+}
+/***Adding Video into movieDetails***/
+.trailer{
+  width: 315px;
+  height: 177px;
+  margin-top: 7px;
+  border: 1px solid #222;
+  border-radius: 8px;
+}
+.castImg{
+  width: 145px;
+  height: 175px;
+  margin: 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  float: left;
+  text-align: center;
+}
+.castName{
+  color: #205970;
+  font-size: .8rem;
+  font-weight: 700;
+  background: #fff;
+  padding: 3px 11px;
+  border: 2px solid #333;
+  border-radius: 12px;
+}
+/****Styling Actor.cshtml websitw****/
+#actorDetails{
+  width: 80%;
+  background: linear-gradient(135deg, rgba(124, 50, 114,.7) 20%, rgba(255, 165, 0,.7));
+  margin: 20px auto;
+  padding: 20px 50px;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 15px;
+  border: 2px solid #fff;
+}
+.actorImg{
+  width: 220px;
+  height: 300px;
+  margin: 10px 50px;
+  border-radius: 8%;
+  border: 2px solid #fff;
+}
+

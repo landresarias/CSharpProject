@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "MovieCSProj_Luis_20220321/1.0.0": {
+        "runtime": {
+          "MovieCSProj_Luis_20220321.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MovieCSProj_Luis_20220321/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

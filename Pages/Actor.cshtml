@@ -1,0 +1,25 @@
+
+@page
+@model ActorModel
+
+
+
+@if(Model.fetch.actorDetails != null){
+    <div id="actorDetails">
+        @if(Model.fetch.profileSet != null){
+            string imagePath = "https://image.tmdb.org/t/p/w500" + Model.fetch.
+                profileSet.profiles.ElementAt(0).file_path;
+            <img class="actorImg" src="@imagePath" alt="pic">
+        }
+        <p>Name: <FONT SIZE=6>@Model.fetch.actorDetails.name</FONT><br>
+            Age: @Model.age<br>
+            Place of birth: @Model.fetch.actorDetails.place_of_birth<br>
+            Homepage: <a href="@Model.fetch.actorDetails.homepage" 
+                    title="Model.fetch.actorDetails.name" target="_blank">
+                        Official website
+                    </a><br>
+        </p>
+        <p id="actorBiog">@Model.fetch.actorDetails.biography</p>
+    </div>
+}
+
