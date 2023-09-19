@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.3
       with:
         name: website
-        path: CSharpProject/website/**
+        # The desired behavior if no files are found using the provided path.
         if-no-files-found: error
 
 
