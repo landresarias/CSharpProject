@@ -28,3 +28,4 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish SimpleFeedReader/SimpleFeedReader.csproj -c Release -o website
+      
