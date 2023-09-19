@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: website
-        path: CSharpProjectPages/Shared/
+        path: CSharpProjectPages/Shared/Layout.cshtml
         # The desired behavior if no files are found using the provided path.
         if-no-files-found: error
 
